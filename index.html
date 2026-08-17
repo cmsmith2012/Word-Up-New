@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171717">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Word Up">
+<title>Word Up</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+<header class="topbar">
+<div class="brand">Word Up</div>
+<div class="tagline">Level up your Scripture game.</div>
+</header>
+<main id="main"></main>
+<nav class="bottom-nav">
+<button class="nav-button active" data-tab="read"><span>📖</span><small>Read</small></button>
+<button class="nav-button" data-tab="discover"><span>🧭</span><small>Discover</small></button>
+<button class="nav-button" data-tab="words"><span>🇬🇷</span><small>Words</small></button>
+<button class="nav-button" data-tab="search"><span>⌕</span><small>Search</small></button>
+<button class="nav-button" data-tab="saved"><span>🔖</span><small>Saved</small></button>
+</nav>
+</div>
+<div id="studySheet" class="sheet">
+<div class="sheet-panel">
+<div class="sheet-handle"></div>
+<button id="closeSheet" class="close-button">×</button>
+<div id="studyContent"></div>
+</div>
+</div>
+<script src="data/bible.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
