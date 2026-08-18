@@ -1,0 +1,16 @@
+const BIBLE_DATA = {
+
+  Genesis: {
+
+    1: [
+
+      {
+        verse: 1,
+        text: "In the beginning God created the heavens and the earth."
+      }
+
+    ]
+
+  }
+
+};
