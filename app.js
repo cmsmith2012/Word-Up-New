@@ -8,72 +8,19 @@ const studyContent = document.getElementById("studyContent");
 const closeSheetButton = document.getElementById("closeSheet");
 
 const BOOKS = [
-  "Genesis",
-  "Exodus",
-  "Leviticus",
-  "Numbers",
-  "Deuteronomy",
-  "Joshua",
-  "Judges",
-  "Ruth",
-  "1 Samuel",
-  "2 Samuel",
-  "1 Kings",
-  "2 Kings",
-  "1 Chronicles",
-  "2 Chronicles",
-  "Ezra",
-  "Nehemiah",
-  "Esther",
-  "Job",
-  "Psalms",
-  "Proverbs",
-  "Ecclesiastes",
-  "Song of Solomon",
-  "Isaiah",
-  "Jeremiah",
-  "Lamentations",
-  "Ezekiel",
-  "Daniel",
-  "Hosea",
-  "Joel",
-  "Amos",
-  "Obadiah",
-  "Jonah",
-  "Micah",
-  "Nahum",
-  "Habakkuk",
-  "Zephaniah",
-  "Haggai",
-  "Zechariah",
-  "Malachi",
-  "Matthew",
-  "Mark",
-  "Luke",
-  "John",
-  "Acts",
-  "Romans",
-  "1 Corinthians",
-  "2 Corinthians",
-  "Galatians",
-  "Ephesians",
-  "Philippians",
-  "Colossians",
-  "1 Thessalonians",
-  "2 Thessalonians",
-  "1 Timothy",
-  "2 Timothy",
-  "Titus",
-  "Philemon",
-  "Hebrews",
-  "James",
-  "1 Peter",
-  "2 Peter",
-  "1 John",
-  "2 John",
-  "3 John",
-  "Jude",
-  "Revelation"
+  "Genesis","Exodus","Leviticus","Numbers","Deuteronomy",
+  "Joshua","Judges","Ruth","1 Samuel","2 Samuel","1 Kings",
+  "2 Kings","1 Chronicles","2 Chronicles","Ezra","Nehemiah",
+  "Esther","Job","Psalms","Proverbs","Ecclesiastes",
+  "Song of Solomon","Isaiah","Jeremiah","Lamentations",
+  "Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah","Jonah",
+  "Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah",
+  "Malachi","Matthew","Mark","Luke","John","Acts","Romans",
+  "1 Corinthians","2 Corinthians","Galatians","Ephesians",
+  "Philippians","Colossians","1 Thessalonians",
+  "2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon",
+  "Hebrews","James","1 Peter","2 Peter","1 John","2 John",
+  "3 John","Jude","Revelation"
 ];
 
 function getAvailableChapters(book) {
@@ -91,7 +38,7 @@ function renderReader() {
     getAvailableChapters(currentBook);
 
   const previousChapter =
-    currentChapter > 1
+    availableChapters.includes(currentChapter - 1)
       ? currentChapter - 1
       : null;
 
@@ -156,7 +103,6 @@ function renderReader() {
 
       </div>
 
-
       <div style="
         display:flex;
         align-items:center;
@@ -181,7 +127,6 @@ function renderReader() {
           ←
         </button>
 
-
         <button
           onclick="openChapterPicker()"
           style="
@@ -196,7 +141,6 @@ function renderReader() {
         >
           Chapter ${currentChapter} ▾
         </button>
-
 
         <button
           onclick="nextChapter()"
@@ -218,9 +162,9 @@ function renderReader() {
 
     </section>
 
-
     ${
       verses.length
+
       ?
 
       `<section class="card">
@@ -280,9 +224,7 @@ function openBookPicker() {
 
   studyContent.innerHTML = `
 
-    <h2>
-      Choose a Book
-    </h2>
+    <h2>Choose a Book</h2>
 
     <p style="color:#78736a;">
       Word Up will eventually have the entire Bible here.
@@ -327,7 +269,6 @@ function selectBook(book) {
       : 1;
 
   closeSheet();
-
   renderReader();
 }
 
@@ -341,9 +282,7 @@ function openChapterPicker() {
 
     studyContent.innerHTML = `
 
-      <h2>
-        Chapters
-      </h2>
+      <h2>Chapters</h2>
 
       <p style="color:#78736a;">
         Chapters for ${currentBook} haven't been
@@ -353,16 +292,12 @@ function openChapterPicker() {
     `;
 
     sheet.classList.add("open");
-
     return;
   }
 
-
   studyContent.innerHTML = `
 
-    <h2>
-      ${currentBook}
-    </h2>
+    <h2>${currentBook}</h2>
 
     <p style="color:#78736a;">
       Choose a chapter.
@@ -370,8 +305,7 @@ function openChapterPicker() {
 
     <div style="
       display:grid;
-      grid-template-columns:
-        repeat(5,1fr);
+      grid-template-columns:repeat(5,1fr);
       gap:8px;
     ">
 
@@ -400,14 +334,11 @@ function selectChapter(chapter) {
   currentChapter = chapter;
 
   closeSheet();
-
   renderReader();
 }
 
 
 function previousChapter() {
-
-  if (currentChapter <= 1) return;
 
   const chapters =
     getAvailableChapters(currentBook);
@@ -448,6 +379,97 @@ function nextChapter() {
 }
 
 
+/* ==========================================
+   WORD UP STUDY ENGINE
+   ========================================== */
+
+function getStudyData(book, chapter, verse) {
+
+  if (
+    book === "Genesis" &&
+    typeof GENESIS_STUDIES !== "undefined"
+  ) {
+
+    return GENESIS_STUDIES[`${chapter}:${verse}`];
+
+  }
+
+  return null;
+}
+
+
+function renderStudySection(id, section) {
+
+  if (!section) return "";
+
+  return `
+
+    <section
+      class="study-section"
+      id="${id}"
+    >
+
+      <h3>
+        ${section.title}
+      </h3>
+
+      ${
+        section.summary
+        ?
+        `<p>
+          ${section.summary}
+        </p>`
+        :
+        ""
+      }
+
+      ${
+        section.detail
+        ?
+        `<p style="
+          color:#5f5b54;
+          line-height:1.7;
+        ">
+          ${section.detail}
+        </p>`
+        :
+        ""
+      }
+
+      ${
+        section.verses
+        ?
+        `
+        <div style="
+          display:flex;
+          flex-wrap:wrap;
+          gap:7px;
+          margin-top:12px;
+        ">
+
+          ${section.verses.map(verse => `
+
+            <span
+              class="pill"
+              style="cursor:default;"
+            >
+              ${verse}
+            </span>
+
+          `).join("")}
+
+        </div>
+        `
+        :
+        ""
+      }
+
+    </section>
+
+  `;
+}
+
+
 function openStudy(verseNumber) {
 
   const verse =
@@ -456,11 +478,58 @@ function openStudy(verseNumber) {
 
   if (!verse) return;
 
+  const study =
+    getStudyData(
+      currentBook,
+      currentChapter,
+      verseNumber
+    );
+
+
+  if (!study) {
+
+    studyContent.innerHTML = `
+
+      <div style="
+        color:#64745c;
+        font-size:10px;
+        font-weight:900;
+        letter-spacing:.13em;
+      ">
+        ${currentBook.toUpperCase()}
+        ${currentChapter}:${verseNumber}
+      </div>
+
+      <h2>Deep Study</h2>
+
+      <p class="quote">
+        ${verse.text}
+      </p>
+
+      <div style="
+        text-align:center;
+        padding:25px 5px;
+        color:#78736a;
+      ">
+        <div style="font-size:30px;">🔎</div>
+
+        <p>
+          Word Up is still building the study
+          for this verse.
+        </p>
+      </div>
+
+    `;
+
+    sheet.classList.add("open");
+    return;
+  }
+
 
   studyContent.innerHTML = `
 
     <div style="
-      color:#64745c;
+      color:#c46b35;
       font-size:10px;
       font-weight:900;
       letter-spacing:.13em;
@@ -469,158 +538,81 @@ function openStudy(verseNumber) {
       ${currentChapter}:${verseNumber}
     </div>
 
-
     <h2>
       Deep Study
     </h2>
-
 
     <p class="quote">
       ${verse.text}
     </p>
 
 
-    <div class="pills">
+    <div
+      class="pills"
+      style="
+        display:flex;
+        flex-wrap:wrap;
+        gap:7px;
+        margin:18px 0 24px;
+      "
+    >
 
-      <button
-        class="pill"
-        onclick="jumpTo('author')"
-      >
-        Author
-      </button>
+      ${[
+        ["author","Author"],
+        ["audience","Audience"],
+        ["bigIdea","Big Idea"],
+        ["context","Context"],
+        ["history","History"],
+        ["culture","Culture"],
+        ["language","Language"],
+        ["theology","Theology"],
+        ["crossReferences","Cross References"],
+        ["misreadings","Misreadings"],
+        ["soWhat","So What"]
+      ].map(([id,label]) => `
 
-      <button
-        class="pill"
-        onclick="jumpTo('audience')"
-      >
-        Audience
-      </button>
+        <button
+          class="pill"
+          onclick="jumpTo('${id}')"
+        >
+          ${label}
+        </button>
 
-      <button
-        class="pill"
-        onclick="jumpTo('big-idea')"
-      >
-        Big Idea
-      </button>
-
-      <button
-        class="pill"
-        onclick="jumpTo('context')"
-      >
-        Context
-      </button>
-
-      <button
-        class="pill"
-        onclick="jumpTo('history')"
-      >
-        History
-      </button>
-
-      <button
-        class="pill"
-        onclick="jumpTo('language')"
-      >
-        Language
-      </button>
-
-      <button
-        class="pill"
-        onclick="jumpTo('theology')"
-      >
-        Theology
-      </button>
+      `).join("")}
 
     </div>
 
 
-    <h3 id="author">
-      Author
-    </h3>
+    ${renderStudySection("author", study.author)}
 
-    <p>
-      Genesis is traditionally attributed to Moses.
-      Modern scholarship also discusses the formation
-      and compilation of the Pentateuch.
-    </p>
+    ${renderStudySection("audience", study.audience)}
 
+    ${renderStudySection("bigIdea", study.bigIdea)}
 
-    <h3 id="audience">
-      Audience
-    </h3>
+    ${renderStudySection("context", study.context)}
 
-    <p>
-      Genesis speaks to Israel as a people learning
-      who their God is, where they came from, and how
-      their covenant story fits into the larger story
-      of creation.
-    </p>
+    ${renderStudySection("history", study.history)}
 
+    ${renderStudySection("culture", study.culture)}
 
-    <h3 id="big-idea">
-      Big Idea
-    </h3>
+    ${renderStudySection("language", study.language)}
 
-    <p>
-      The opening verse introduces God as the ultimate
-      source and sovereign creator of everything that exists.
-    </p>
+    ${renderStudySection("theology", study.theology)}
 
+    ${renderStudySection(
+      "crossReferences",
+      study.crossReferences
+    )}
 
-    <h3 id="context">
-      Literary Context
-    </h3>
+    ${renderStudySection(
+      "misreadings",
+      study.misreadings
+    )}
 
-    <p>
-      Genesis 1 begins the Bible's creation account and
-      establishes themes that echo throughout Scripture:
-      God, creation, order, humanity, blessing, and
-      God's purposes for the world.
-    </p>
-
-
-    <h3 id="history">
-      Historical Context
-    </h3>
-
-    <p>
-      The ancient world contained many competing creation
-      stories. Genesis presents a distinctly Israelite account
-      centered on one sovereign God rather than a struggle
-      among competing gods.
-    </p>
-
-
-    <h3 id="language">
-      Original Language
-    </h3>
-
-    <p>
-      The Hebrew opening begins with
-      <b>bereshit</b>, commonly translated
-      “in the beginning.”
-    </p>
-
-
-    <h3 id="theology">
-      Theology
-    </h3>
-
-    <p>
-      This verse establishes a foundational biblical claim:
-      creation ultimately depends upon God.
-    </p>
-
-
-    <h3>
-      So What?
-    </h3>
-
-    <p>
-      Before Scripture tells us what humanity should do,
-      it tells us who God is.
-      The Bible's story begins with God, not us.
-    </p>
+    ${renderStudySection(
+      "soWhat",
+      study.soWhat
+    )}
 
   `;
 
@@ -645,9 +637,7 @@ function jumpTo(id) {
 
 
 function closeSheet() {
-
   sheet.classList.remove("open");
-
 }
 
 
@@ -692,7 +682,6 @@ document
         if (tab === "read") {
 
           renderReader();
-
           return;
 
         }
@@ -718,32 +707,26 @@ document
             "
           >
 
-            <div
-              style="
-                font-size:35px;
-                margin-bottom:12px;
-              "
-            >
+            <div style="
+              font-size:35px;
+              margin-bottom:12px;
+            ">
               ${icon}
             </div>
 
-            <h2
-              style="
-                font-family:Georgia,serif;
-              "
-            >
+            <h2 style="
+              font-family:Georgia,serif;
+            ">
               ${
                 tab.charAt(0).toUpperCase()
                 + tab.slice(1)
               }
             </h2>
 
-            <p
-              style="
-                color:#78736a;
-                line-height:1.6;
-              "
-            >
+            <p style="
+              color:#78736a;
+              line-height:1.6;
+            ">
               This section is coming next.
               We're building Word Up one piece
               at a time.
