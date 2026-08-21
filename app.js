@@ -509,19 +509,35 @@ function renderEvidenceSection(evidence) {
       <div class="evidence-list">
 
         ${
-          items.map(item => `
+          items.map((item, index) => `
 
-            <article class="evidence-card">
+            <article
+              class="evidence-card"
+              id="evidence-card-${index}"
+            >
 
               <div class="evidence-card-top">
 
-                <span class="evidence-type">
-                  🔎 ${item.type || "Evidence"}
-                </span>
+                <div>
 
-                <span class="evidence-strength">
-                  ${item.strength || "Unclassified"}
-                </span>
+                  <span class="evidence-type">
+                    🔎 ${item.type || "Evidence"}
+                  </span>
+
+                  <span class="evidence-strength">
+                    ${item.strength || "Unclassified"}
+                  </span>
+
+                </div>
+
+                <button
+                  class="evidence-toggle"
+                  onclick="toggleEvidence(${index})"
+                  aria-label="Expand evidence"
+                  aria-expanded="false"
+                >
+                  +
+                </button>
 
               </div>
 
@@ -531,78 +547,85 @@ function renderEvidenceSection(evidence) {
               </h4>
 
 
-              ${
-                item.explanation
-                ?
-                `
-                <p class="evidence-explanation">
-                  ${item.explanation}
-                </p>
-                `
-                :
-                ""
-              }
+              <div
+                class="evidence-details"
+                id="evidence-details-${index}"
+              >
 
-
-              ${
-                item.supports
-                ?
-                `
-                <div class="evidence-box evidence-supports">
-
-                  <div class="evidence-box-label">
-                    WHAT THIS SUPPORTS
-                  </div>
-
-                  <p>
-                    ${item.supports}
+                ${
+                  item.explanation
+                  ?
+                  `
+                  <p class="evidence-explanation">
+                    ${item.explanation}
                   </p>
-
-                </div>
-                `
-                :
-                ""
-              }
+                  `
+                  :
+                  ""
+                }
 
 
-              ${
-                item.doesNotProve
-                ?
-                `
-                <div class="evidence-box evidence-limits">
+                ${
+                  item.supports
+                  ?
+                  `
+                  <div class="evidence-box evidence-supports">
 
-                  <div class="evidence-box-label">
-                    WHAT THIS DOES NOT PROVE
+                    <div class="evidence-box-label">
+                      WHAT THIS SUPPORTS
+                    </div>
+
+                    <p>
+                      ${item.supports}
+                    </p>
+
                   </div>
-
-                  <p>
-                    ${item.doesNotProve}
-                  </p>
-
-                </div>
-                `
-                :
-                ""
-              }
+                  `
+                  :
+                  ""
+                }
 
 
-              ${
-                item.source
-                ?
-                `
-                <div class="evidence-source">
+                ${
+                  item.doesNotProve
+                  ?
+                  `
+                  <div class="evidence-box evidence-limits">
 
-                  <span>
-                    Source
-                  </span>
+                    <div class="evidence-box-label">
+                      WHAT THIS DOES NOT PROVE
+                    </div>
 
-                  ${item.source}
+                    <p>
+                      ${item.doesNotProve}
+                    </p>
 
-                </div>
-                `
-                :
-                ""
-              }
+                  </div>
+                  `
+                  :
+                  ""
+                }
+
+
+                ${
+                  item.source
+                  ?
+                  `
+                  <div class="evidence-source">
+
+                    <span>
+                      Source
+                    </span>
+
+                    ${item.source}
+
+                  </div>
+                  `
+                  :
+                  ""
+                }
+
+              </div>
 
             </article>
 
@@ -614,6 +637,58 @@ function renderEvidenceSection(evidence) {
     </section>
 
   `;
+}
+
+
+function toggleEvidence(index) {
+
+  const details =
+    document.getElementById(
+      `evidence-details-${index}`
+    );
+
+  const card =
+    document.getElementById(
+      `evidence-card-${index}`
+    );
+
+  if (!details || !card) return;
+
+  const button =
+    card.querySelector(".evidence-toggle");
+
+  const isOpen =
+    card.classList.contains("expanded");
+
+  if (isOpen) {
+
+    card.classList.remove("expanded");
+
+    details.style.maxHeight = "0px";
+
+    button.textContent = "+";
+
+    button.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  } else {
+
+    card.classList.add("expanded");
+
+    details.style.maxHeight =
+      details.scrollHeight + "px";
+
+    button.textContent = "−";
+
+    button.setAttribute(
+      "aria-expanded",
+      "true"
+    );
+
+  }
+
 }
 
 
