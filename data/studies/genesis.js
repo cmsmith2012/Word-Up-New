@@ -277,3 +277,164 @@ const GENESIS_STUDIES = {
   }
 
 };
+
+
+/* ==========================================
+   WORD UP — WORD STUDIES
+   ========================================== */
+
+const WORD_STUDIES = {
+
+  "Genesis:1:1": {
+
+    "created": {
+
+      word: "בָּרָא",
+
+      transliteration: "bārāʾ",
+
+      pronunciation: "bah-RAH",
+
+      language: "Hebrew",
+
+      meaning: "created",
+
+      partOfSpeech: "Verb",
+
+      summary:
+        "A Hebrew verb describing an act of bringing something into existence or establishing something new.",
+
+      form:
+        "Qal perfect, third-person masculine singular.",
+
+      usage:
+        "The verb baraʾ is used in the Hebrew Bible with God as its grammatical subject in a distinctive way. It appears in contexts involving creation, ordering, and bringing about something new.",
+
+      context:
+        "In Genesis 1:1, baraʾ introduces God's creative action at the beginning of the biblical creation account. The surrounding passage then describes God forming, separating, filling, and ordering creation.",
+
+      semanticRange:
+        "Depending on context, baraʾ can refer to creating, shaping, or bringing about something. Its meaning should be determined from the sentence and broader passage rather than from the dictionary entry alone.",
+
+      theology:
+        "The use of baraʾ places God as the active subject of creation and establishes one of the foundational claims of Genesis: creation ultimately depends upon God.",
+
+      misreading:
+        "It is sometimes claimed that baraʾ can only mean creating something absolutely from nothing. The Hebrew word itself does not settle the philosophical question of creatio ex nihilo by itself; that conclusion comes from considering Genesis alongside the broader biblical witness.",
+
+      relatedWords: [
+        "Creation",
+        "Creator",
+        "New creation"
+      ]
+
+    },
+
+
+    "God": {
+
+      word: "אֱלֹהִים",
+
+      transliteration: "ʾĕlōhîm",
+
+      pronunciation: "eh-loh-HEEM",
+
+      language: "Hebrew",
+
+      meaning: "God",
+
+      partOfSpeech: "Noun",
+
+      summary:
+        "The Hebrew noun used here for God. Although its form is grammatically plural-looking, it takes singular grammar when referring to the God of Israel.",
+
+      form:
+        "Masculine plural form functioning as a singular noun in this context.",
+
+      usage:
+        "Elohim is one of the principal Hebrew designations for God in the Old Testament. The same form can also refer to other divine beings or beings associated with the divine realm depending on context.",
+
+      context:
+        "Genesis 1:1 immediately presents Elohim as the subject of creation. The emphasis is therefore on God as the one acting upon the created order.",
+
+      theology:
+        "The opening verse of Genesis begins not with an argument for God's existence but with God already present as the central actor in the story.",
+
+      misreading:
+        "The plural form of Elohim does not by itself prove the doctrine of the Trinity. Christian theology can connect Genesis with the Trinity, but that conclusion requires the wider biblical revelation rather than this grammatical form alone."
+
+    },
+
+
+    "heavens": {
+
+      word: "שָׁמַיִם",
+
+      transliteration: "šāmayim",
+
+      pronunciation: "shah-MAH-yim",
+
+      language: "Hebrew",
+
+      meaning: "heavens / sky",
+
+      partOfSpeech: "Noun",
+
+      summary:
+        "A Hebrew noun referring to the heavens, sky, or celestial realm.",
+
+      form:
+        "Plural-form noun.",
+
+      usage:
+        "The word can refer to the visible sky, the realm above the earth, or the broader heavenly realm depending on context.",
+
+      context:
+        "Genesis 1:1 uses shamayim alongside erets to describe the totality of the created realm.",
+
+      theology:
+        "The verse presents both the heavens and the earth as belonging to the created order rather than being divine beings themselves.",
+
+      misreading:
+        "The English word 'heavens' can sound more exclusively spiritual than the Hebrew term necessarily is. In Genesis, the word includes the physical realm above the earth."
+
+    },
+
+
+    "earth": {
+
+      word: "אֶרֶץ",
+
+      transliteration: "ʾereṣ",
+
+      pronunciation: "EH-rets",
+
+      language: "Hebrew",
+
+      meaning: "earth / land",
+
+      partOfSpeech: "Noun",
+
+      summary:
+        "A common Hebrew noun meaning earth, land, territory, or ground depending on context.",
+
+      form:
+        "Feminine singular noun.",
+
+      usage:
+        "Erets occurs throughout the Hebrew Bible and can refer to the entire earth or to a particular land or territory.",
+
+      context:
+        "In Genesis 1:1, erets is paired with shamayim, forming a broad expression encompassing the created world.",
+
+      theology:
+        "The pairing emphasizes that the physical world is part of God's creation and therefore belongs within the biblical story of God's purposes.",
+
+      misreading:
+        "Erets does not automatically mean the planet Earth in the modern scientific sense every time it appears. Context determines whether it means earth, land, or a particular territory."
+
+    }
+
+  }
+
+};
