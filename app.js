@@ -544,6 +544,41 @@ function openStudy(verseNumber) {
     </div>
 
 
+    <div class="study-meta">
+
+      <div class="study-meta-top">
+
+        <span class="study-meta-label">
+          STUDY NOTES
+        </span>
+
+        <span class="confidence-badge">
+          ${study.metadata?.confidence || "Established"}
+        </span>
+
+      </div>
+
+      <p>
+        ${study.metadata?.confidenceNote || ""}
+      </p>
+
+      <div class="topic-list">
+
+        ${
+          (study.metadata?.topics || [])
+            .map(topic => `
+              <span class="topic-tag">
+                ${topic}
+              </span>
+            `)
+            .join("")
+        }
+
+      </div>
+
+    </div>
+
+
     <div class="study-lens">
 
       <div class="study-label">
@@ -680,6 +715,11 @@ function openStudy(verseNumber) {
       )}
 
       ${renderStudySection(
+        "interpretations",
+        study.interpretations
+      )}
+
+      ${renderStudySection(
         "soWhat",
         study.soWhat
       )}
@@ -690,6 +730,7 @@ function openStudy(verseNumber) {
 
   sheet.classList.add("open");
 }
+
 
 function jumpTo(id) {
 
