@@ -560,3 +560,57 @@ main{padding:18px}
   margin-bottom: 3px;
   text-transform: uppercase;
 }
+
+
+/* ==========================================
+   EVIDENCE — EXPAND / COLLAPSE
+   ========================================== */
+
+.evidence-card-top {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.evidence-card-top > div {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:7px;
+}
+
+.evidence-toggle {
+  flex:0 0 auto;
+  width:30px;
+  height:30px;
+  border:1px solid #ddd6ca;
+  background:#f5f0e6;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:inherit;
+  font-size:19px;
+  line-height:1;
+  color:#625d55;
+  cursor:pointer;
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.evidence-toggle:active {
+  transform:scale(.92);
+}
+
+.evidence-details {
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .3s ease;
+}
+
+.evidence-card.expanded
+.evidence-details {
+  margin-top:2px;
+}
