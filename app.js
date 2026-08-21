@@ -485,38 +485,38 @@ function openStudy(verseNumber) {
       verseNumber
     );
 
-
   if (!study) {
 
     studyContent.innerHTML = `
 
-      <div style="
-        color:#64745c;
-        font-size:10px;
-        font-weight:900;
-        letter-spacing:.13em;
-      ">
-        ${currentBook.toUpperCase()}
-        ${currentChapter}:${verseNumber}
+      <div class="study-header">
+
+        <div class="study-reference">
+          ${currentBook.toUpperCase()}
+          ${currentChapter}:${verseNumber}
+        </div>
+
+        <h2>Deep Study</h2>
+
+        <p class="quote">
+          ${verse.text}
+        </p>
+
       </div>
 
-      <h2>Deep Study</h2>
+      <div class="study-empty">
 
-      <p class="quote">
-        ${verse.text}
-      </p>
+        <div class="study-empty-icon">
+          🔎
+        </div>
 
-      <div style="
-        text-align:center;
-        padding:25px 5px;
-        color:#78736a;
-      ">
-        <div style="font-size:30px;">🔎</div>
+        <h3>We're still digging.</h3>
 
         <p>
-          Word Up is still building the study
-          for this verse.
+          The Word Up study for this verse
+          hasn't been built yet.
         </p>
+
       </div>
 
     `;
@@ -528,97 +528,168 @@ function openStudy(verseNumber) {
 
   studyContent.innerHTML = `
 
-    <div style="
-      color:#c46b35;
-      font-size:10px;
-      font-weight:900;
-      letter-spacing:.13em;
-    ">
-      ${currentBook.toUpperCase()}
-      ${currentChapter}:${verseNumber}
-    </div>
+    <div class="study-header">
 
-    <h2>
-      Deep Study
-    </h2>
+      <div class="study-reference">
+        ${currentBook.toUpperCase()}
+        ${currentChapter}:${verseNumber}
+      </div>
 
-    <p class="quote">
-      ${verse.text}
-    </p>
+      <h2>Deep Study</h2>
 
-
-    <div
-      class="pills"
-      style="
-        display:flex;
-        flex-wrap:wrap;
-        gap:7px;
-        margin:18px 0 24px;
-      "
-    >
-
-      ${[
-        ["author","Author"],
-        ["audience","Audience"],
-        ["bigIdea","Big Idea"],
-        ["context","Context"],
-        ["history","History"],
-        ["culture","Culture"],
-        ["language","Language"],
-        ["theology","Theology"],
-        ["crossReferences","Cross References"],
-        ["misreadings","Misreadings"],
-        ["soWhat","So What"]
-      ].map(([id,label]) => `
-
-        <button
-          class="pill"
-          onclick="jumpTo('${id}')"
-        >
-          ${label}
-        </button>
-
-      `).join("")}
+      <p class="quote">
+        ${verse.text}
+      </p>
 
     </div>
 
 
-    ${renderStudySection("author", study.author)}
+    <div class="study-lens">
 
-    ${renderStudySection("audience", study.audience)}
+      <div class="study-label">
+        THE LENS
+      </div>
 
-    ${renderStudySection("bigIdea", study.bigIdea)}
+      <button
+        class="lens-card"
+        onclick="jumpTo('author')"
+      >
+        <span class="lens-title">
+          Author
+        </span>
 
-    ${renderStudySection("context", study.context)}
+        <span class="lens-text">
+          ${study.author?.summary || ""}
+        </span>
 
-    ${renderStudySection("history", study.history)}
+        <span class="lens-arrow">
+          →
+        </span>
+      </button>
 
-    ${renderStudySection("culture", study.culture)}
 
-    ${renderStudySection("language", study.language)}
+      <button
+        class="lens-card"
+        onclick="jumpTo('audience')"
+      >
+        <span class="lens-title">
+          Audience
+        </span>
 
-    ${renderStudySection("theology", study.theology)}
+        <span class="lens-text">
+          ${study.audience?.summary || ""}
+        </span>
 
-    ${renderStudySection(
-      "crossReferences",
-      study.crossReferences
-    )}
+        <span class="lens-arrow">
+          →
+        </span>
+      </button>
 
-    ${renderStudySection(
-      "misreadings",
-      study.misreadings
-    )}
 
-    ${renderStudySection(
-      "soWhat",
-      study.soWhat
-    )}
+      <button
+        class="lens-card"
+        onclick="jumpTo('bigIdea')"
+      >
+        <span class="lens-title">
+          Big Idea
+        </span>
+
+        <span class="lens-text">
+          ${study.bigIdea?.summary || ""}
+        </span>
+
+        <span class="lens-arrow">
+          →
+        </span>
+      </button>
+
+    </div>
+
+
+    <div class="study-explore">
+
+      <div class="study-label">
+        DIG DEEPER
+      </div>
+
+      <div class="study-grid">
+
+        ${[
+          ["context","Context","The passage around it"],
+          ["history","History","The world behind it"],
+          ["culture","Culture","What the original audience knew"],
+          ["language","Language","Hebrew, Greek & key words"],
+          ["theology","Theology","What it teaches about God"],
+          ["crossReferences","Cross References","Where Scripture connects"],
+          ["misreadings","Misreadings","Where interpretation gets tricky"],
+          ["soWhat","So What?","Why it matters today"]
+        ].map(([id,title,description]) => `
+
+          <button
+            class="study-topic"
+            onclick="jumpTo('${id}')"
+          >
+
+            <span class="topic-title">
+              ${title}
+            </span>
+
+            <span class="topic-description">
+              ${description}
+            </span>
+
+            <span class="topic-arrow">
+              →
+            </span>
+
+          </button>
+
+        `).join("")}
+
+      </div>
+
+    </div>
+
+
+    <div class="study-sections">
+
+      ${renderStudySection("author", study.author)}
+
+      ${renderStudySection("audience", study.audience)}
+
+      ${renderStudySection("bigIdea", study.bigIdea)}
+
+      ${renderStudySection("context", study.context)}
+
+      ${renderStudySection("history", study.history)}
+
+      ${renderStudySection("culture", study.culture)}
+
+      ${renderStudySection("language", study.language)}
+
+      ${renderStudySection("theology", study.theology)}
+
+      ${renderStudySection(
+        "crossReferences",
+        study.crossReferences
+      )}
+
+      ${renderStudySection(
+        "misreadings",
+        study.misreadings
+      )}
+
+      ${renderStudySection(
+        "soWhat",
+        study.soWhat
+      )}
+
+    </div>
 
   `;
 
   sheet.classList.add("open");
 }
-
 
 function jumpTo(id) {
 
