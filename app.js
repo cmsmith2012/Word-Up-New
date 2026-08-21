@@ -470,6 +470,153 @@ function renderStudySection(id, section) {
 }
 
 
+function renderEvidenceSection(evidence) {
+
+  if (!evidence) return "";
+
+  const items = evidence.items || [];
+
+  return `
+
+    <section
+      class="study-section evidence-section"
+      id="evidence"
+    >
+
+      <div class="evidence-heading">
+
+        <div class="study-label">
+          EVIDENCE
+        </div>
+
+        <h3>
+          ${evidence.title || "Evidence"}
+        </h3>
+
+        ${
+          evidence.summary
+          ?
+          `<p>
+            ${evidence.summary}
+          </p>`
+          :
+          ""
+        }
+
+      </div>
+
+
+      <div class="evidence-list">
+
+        ${
+          items.map(item => `
+
+            <article class="evidence-card">
+
+              <div class="evidence-card-top">
+
+                <span class="evidence-type">
+                  🔎 ${item.type || "Evidence"}
+                </span>
+
+                <span class="evidence-strength">
+                  ${item.strength || "Unclassified"}
+                </span>
+
+              </div>
+
+
+              <h4>
+                ${item.title || ""}
+              </h4>
+
+
+              ${
+                item.explanation
+                ?
+                `
+                <p class="evidence-explanation">
+                  ${item.explanation}
+                </p>
+                `
+                :
+                ""
+              }
+
+
+              ${
+                item.supports
+                ?
+                `
+                <div class="evidence-box evidence-supports">
+
+                  <div class="evidence-box-label">
+                    WHAT THIS SUPPORTS
+                  </div>
+
+                  <p>
+                    ${item.supports}
+                  </p>
+
+                </div>
+                `
+                :
+                ""
+              }
+
+
+              ${
+                item.doesNotProve
+                ?
+                `
+                <div class="evidence-box evidence-limits">
+
+                  <div class="evidence-box-label">
+                    WHAT THIS DOES NOT PROVE
+                  </div>
+
+                  <p>
+                    ${item.doesNotProve}
+                  </p>
+
+                </div>
+                `
+                :
+                ""
+              }
+
+
+              ${
+                item.source
+                ?
+                `
+                <div class="evidence-source">
+
+                  <span>
+                    Source
+                  </span>
+
+                  ${item.source}
+
+                </div>
+                `
+                :
+                ""
+              }
+
+            </article>
+
+          `).join("")
+        }
+
+      </div>
+
+    </section>
+
+  `;
+}
+
+
 function openStudy(verseNumber) {
 
   const verse =
@@ -653,10 +800,12 @@ function openStudy(verseNumber) {
           ["context","Context","The passage around it"],
           ["history","History","The world behind it"],
           ["culture","Culture","What the original audience knew"],
+          ["evidence","Evidence","Archaeology, history & science"],
           ["language","Language","Hebrew, Greek & key words"],
           ["theology","Theology","What it teaches about God"],
           ["crossReferences","Cross References","Where Scripture connects"],
           ["misreadings","Misreadings","Where interpretation gets tricky"],
+          ["interpretations","Interpretations","Where Christians disagree"],
           ["soWhat","So What?","Why it matters today"]
         ].map(([id,title,description]) => `
 
@@ -698,7 +847,7 @@ function openStudy(verseNumber) {
 
       ${renderStudySection("history", study.history)}
 
-      ${renderStudySection("culture", study.culture)}
+      ${renderEvidenceSection(study.evidence)}
 
       ${renderStudySection("language", study.language)}
 
