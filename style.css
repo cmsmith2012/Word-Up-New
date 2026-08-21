@@ -607,10 +607,13 @@ main{padding:18px}
 .evidence-details {
   max-height:0;
   overflow:hidden;
-  transition:max-height .3s ease;
+  opacity:0;
+  transition:
+    max-height .3s ease,
+    opacity .2s ease;
 }
 
-.evidence-card.expanded
-.evidence-details {
+.evidence-card.expanded .evidence-details {
+  opacity:1;
   margin-top:2px;
 }
