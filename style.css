@@ -205,3 +205,168 @@ main{padding:18px}
   cursor:pointer;
   font-family:inherit;
 }
+
+/* ==========================================
+   WORD UP — DEEP STUDY
+   ========================================== */
+
+.study-header {
+  margin-bottom: 24px;
+}
+
+.study-reference {
+  color: #c46b35;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  margin-bottom: 7px;
+}
+
+.study-header h2 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  margin: 0 0 14px;
+}
+
+.study-label {
+  color: #78736a;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  margin-bottom: 9px;
+}
+
+.study-lens {
+  margin-bottom: 28px;
+}
+
+.lens-card {
+  width: 100%;
+  display: block;
+  position: relative;
+  text-align: left;
+  border: 1px solid #e5dfd3;
+  background: #f8f4eb;
+  border-radius: 16px;
+  padding: 15px 42px 15px 16px;
+  margin-bottom: 8px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.lens-title {
+  display: block;
+  font-weight: 900;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.lens-text {
+  display: block;
+  color: #706b62;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.lens-arrow {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #c46b35;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.study-explore {
+  margin-bottom: 28px;
+}
+
+.study-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.study-topic {
+  position: relative;
+  text-align: left;
+  min-height: 90px;
+  border: 1px solid #e5dfd3;
+  background: #fffdf8;
+  border-radius: 15px;
+  padding: 13px 28px 13px 13px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.topic-title {
+  display: block;
+  font-weight: 900;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.topic-description {
+  display: block;
+  color: #817b71;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.topic-arrow {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  color: #c46b35;
+  font-weight: 900;
+}
+
+.study-sections {
+  border-top: 1px solid #e5dfd3;
+  padding-top: 5px;
+}
+
+.study-section {
+  padding: 22px 0;
+  border-bottom: 1px solid #e5dfd3;
+  scroll-margin-top: 20px;
+}
+
+.study-section h3 {
+  font-family: Georgia, serif;
+  font-size: 21px;
+  margin: 0 0 9px;
+}
+
+.study-section p {
+  color: #4f4b45;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 0 10px;
+}
+
+.study-section p:last-child {
+  margin-bottom: 0;
+}
+
+.study-empty {
+  text-align: center;
+  padding: 35px 15px;
+}
+
+.study-empty-icon {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.study-empty h3 {
+  font-family: Georgia, serif;
+  font-size: 20px;
+  margin: 0 0 7px;
+}
+
+.study-empty p {
+  color: #78736a;
+  line-height: 1.6;
+}
