@@ -1,5 +1,6 @@
 // Word Up — Genesis study data
-// Content is structured separately from Bible translation text.
+// Structured study content for Genesis.
+// Bible translation text is stored separately.
 
 const GENESIS_STUDIES = {
 
@@ -7,14 +8,17 @@ const GENESIS_STUDIES = {
 
     metadata: {
       confidence: "High",
+
       confidenceNote:
         "The central theological claim is clear. Some questions about authorship, chronology, and the precise meaning of the opening phrase are debated.",
+
       traditions: [
         "Jewish",
         "Catholic",
         "Orthodox",
         "Protestant"
       ],
+
       topics: [
         "Creation",
         "God",
@@ -152,6 +156,111 @@ const GENESIS_STUDIES = {
 
       detail:
         "One major discussion concerns whether Genesis 1:1 describes God's initial creation of the universe as a complete opening statement or functions as an introductory clause leading into verse 2. Another major discussion concerns how the creation days relate to chronology and genre. These disagreements should not obscure the central claim shared across the major Christian traditions: God is the Creator."
+    },
+
+
+    // ==========================================
+    // EVIDENCE
+    // ==========================================
+
+    evidence: {
+
+      title: "Evidence",
+
+      summary:
+        "Archaeology and ancient texts help us understand the world Genesis was written into, while also showing where evidence does and does not allow us to make historical claims.",
+
+      items: [
+
+        {
+          type: "Ancient Texts",
+
+          strength: "Strong Contextual Support",
+
+          title:
+            "Ancient Near Eastern creation traditions",
+
+          explanation:
+            "Ancient texts from Mesopotamia and the wider Near East preserve creation traditions that give us valuable context for understanding Genesis. These accounts show that questions about creation, divine authority, humanity, and the ordering of the cosmos were important in the ancient world.",
+
+          supports:
+            "This strongly supports the historical and cultural setting in which Genesis communicates its creation theology.",
+
+          doesNotProve:
+            "These parallels do not independently prove that Genesis is historically or theologically true. They establish context and comparison, not direct confirmation of the biblical account.",
+
+          source:
+            "Ancient Near Eastern creation literature, including the Enuma Elish and other Mesopotamian traditions."
+        },
+
+
+        {
+          type: "Archaeology",
+
+          strength: "Strong Contextual Support",
+
+          title:
+            "The archaeological world behind Genesis",
+
+          explanation:
+            "Archaeology has revealed extensive evidence for the cities, cultures, writing systems, religious practices, and political structures of the ancient Near East. This allows historians to reconstruct much of the environment in which the traditions preserved in Genesis developed.",
+
+          supports:
+            "The broader historical and cultural setting described by Genesis is situated within a real and extensively documented ancient Near Eastern world.",
+
+          doesNotProve:
+            "Archaeology cannot excavate a physical artifact proving the theological claim that God created the universe.",
+
+          source:
+            "Archaeological research across Mesopotamia, the Levant, Egypt, and Anatolia."
+        },
+
+
+        {
+          type: "Historical",
+
+          strength: "Important Context",
+
+          title:
+            "Genesis and Israel's ancient worldview",
+
+          explanation:
+            "The biblical creation account presents a worldview in which the natural world is created by God rather than being itself divine. This distinction becomes especially significant when Genesis is compared with surrounding ancient religious traditions.",
+
+          supports:
+            "The comparison helps demonstrate that Genesis participates in the real intellectual and religious environment of the ancient Near East while making distinctive theological claims.",
+
+          doesNotProve:
+            "A distinctive worldview is not itself archaeological proof of divine revelation.",
+
+          source:
+            "Comparative study of ancient Near Eastern religion and biblical literature."
+        },
+
+
+        {
+          type: "Science",
+
+          strength: "Separate Question",
+
+          title:
+            "Modern cosmology and the beginning of the universe",
+
+          explanation:
+            "Modern cosmology provides evidence that the observable universe has a finite history and has undergone cosmic expansion from an extremely hot, dense early state. Some Christians see this as broadly compatible with the biblical idea that the universe has a beginning.",
+
+          supports:
+            "Modern cosmology is compatible with the broad theological claim that the universe is not eternal in its present form and has a beginning to its observable history.",
+
+          doesNotProve:
+            "The Big Bang does not scientifically prove Genesis 1:1, nor does Genesis 1:1 provide a modern scientific description of the Big Bang.",
+
+          source:
+            "Modern observational cosmology and the scientific study of cosmic expansion and the early universe."
+        }
+
+      ]
+
     },
 
 
