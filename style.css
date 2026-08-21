@@ -429,3 +429,134 @@ main{padding:18px}
   font-size: 10px;
   font-weight: 700;
 }
+
+
+/* ==========================================
+   WORD UP — EVIDENCE
+   ========================================== */
+
+.evidence-section {
+  margin-top: 30px;
+}
+
+.evidence-heading {
+  margin-bottom: 16px;
+}
+
+.evidence-heading h3 {
+  margin: 6px 0 7px;
+}
+
+.evidence-heading p {
+  color: #706b62;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.evidence-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.evidence-card {
+  background: #fffdf8;
+  border: 1px solid #e4ddd1;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.evidence-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 11px;
+}
+
+.evidence-type {
+  color: #716b61;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.evidence-strength {
+  border: 1px solid #ddd6ca;
+  border-radius: 999px;
+  padding: 5px 8px;
+  color: #625d55;
+  font-size: 9px;
+  font-weight: 900;
+}
+
+.evidence-card h4 {
+  font-family: Georgia, serif;
+  font-size: 19px;
+  line-height: 1.3;
+  margin: 0 0 9px;
+}
+
+.evidence-explanation {
+  color: #5f5b54;
+  line-height: 1.65;
+  font-size: 13px;
+  margin: 0 0 14px;
+}
+
+.evidence-box {
+  border-radius: 12px;
+  padding: 11px 12px;
+  margin-top: 9px;
+}
+
+.evidence-box-label {
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  margin-bottom: 5px;
+}
+
+.evidence-box p {
+  font-size: 12px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.evidence-supports {
+  background: #f2f5ef;
+  border: 1px solid #dce5d7;
+}
+
+.evidence-supports .evidence-box-label {
+  color: #596650;
+}
+
+.evidence-limits {
+  background: #f5f0e6;
+  border: 1px solid #e5dfd3;
+}
+
+.evidence-limits .evidence-box-label {
+  color: #716a5e;
+}
+
+.evidence-source {
+  border-top: 1px solid #ebe5da;
+  margin-top: 14px;
+  padding-top: 10px;
+  color: #777168;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.evidence-source span {
+  display: block;
+  color: #9a9388;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
